@@ -39,7 +39,3 @@
 ## License
 
 MIT。非官方作品，与 Questing Goose Studio / tinyBuild 无关。
-
----
-
-原理与构建说明见 [`docs/how-it-works.md`](docs/how-it-works.md)。
