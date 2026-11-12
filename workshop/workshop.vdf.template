@@ -1,0 +1,11 @@
+"workshopitem"
+{
+    "appid"            "4348910"
+    "publishedfileid"  "0"
+    "contentfolder"    "<ABSOLUTE_PATH_TO>/workshop/content"
+    "previewfile"      "<ABSOLUTE_PATH_TO>/workshop/preview.png"
+    "visibility"       "2"
+    "title"            "涡轮增压扩展 / Turbo Booster Extended"
+    "description"      "File: docs/workshop-description.zh.md (paste its text here, or let package-workshop.ps1 generate this file)"
+    "changenote"       "1.1.0: 养殖笼与单只动物也可被涡轮加速"
+}

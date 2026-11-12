@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Building requires the managed assemblies shipped with the game.
+    Point at the game folder in one of these ways (highest priority first):
+      dotnet build -c Release -p:GameDir="D:\SteamLibrary\steamapps\common\Probably Stolen"
+      set PROBABLY_STOLEN_DIR=D:\SteamLibrary\steamapps\common\Probably Stolen
+      edit the default below
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>ras_turbo_boost</AssemblyName>
+    <RootNamespace>RasTurboBoost</RootNamespace>
+    <Version>1.1.1</Version>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>disable</Nullable>
+
+    <GameDir Condition="'$(GameDir)' == '' and '$(PROBABLY_STOLEN_DIR)' != ''">$(PROBABLY_STOLEN_DIR)</GameDir>
+    <GameDir Condition="'$(GameDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Probably Stolen</GameDir>
+    <ManagedDir>$(GameDir)\Probably Stolen_Data\Managed</ManagedDir>
+
+    <!-- Copy the built mod into <GameDir>\Mods\<ModId>\ ; pass -p:DeployToMods=false to skip -->
+    <DeployToMods Condition="'$(DeployToMods)' == ''">true</DeployToMods>
+    <ModId>ras_turbo_boost</ModId>
+  </PropertyGroup>
+
+  <Target Name="CheckGameDir" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(ManagedDir)\Assembly-CSharp.dll')"
+           Text="Assembly-CSharp.dll not found under $(ManagedDir). Pass -p:GameDir=&quot;path to game root&quot; or set PROBABLY_STOLEN_DIR." />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(ManagedDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="DeployToMods" AfterTargets="Build" Condition="'$(DeployToMods)' == 'true'">
+    <PropertyGroup>
+      <ModFolder>$(GameDir)\Mods\$(ModId)</ModFolder>
+    </PropertyGroup>
+    <MakeDir Directories="$(ModFolder)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModFolder)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\manifest.xml" DestinationFolder="$(ModFolder)" />
+    <Message Importance="high" Text="Installed to $(ModFolder)" />
+  </Target>
+
+</Project>

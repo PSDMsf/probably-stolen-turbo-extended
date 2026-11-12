@@ -1,0 +1,21 @@
+# 构建产物
+bin/
+obj/
+dist/
+*.user
+*.suo
+.vs/
+.idea/
+
+# 工坊打包中间产物（由 workshop/package-workshop.ps1 生成）
+workshop/content/
+workshop/*.vdf
+!workshop/workshop.vdf.template
+
+# 本地游戏部署（如果有人直接在仓库里放 Mods 目录）
+Mods/
+
+# 系统垃圾
+Thumbs.db
+.DS_Store
+desktop.ini

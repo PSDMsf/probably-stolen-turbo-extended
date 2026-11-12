@@ -1,0 +1,61 @@
+name: Bug report
+description: 报告一个问题 / Report a bug
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请先确认：模组已启用并**重启过游戏**；只装了这一个改涡轮判定的模组。
+        Please make sure the mod is enabled, the game was restarted, and no other mod patches the turbo checks.
+
+  - type: input
+    id: mod-version
+    attributes:
+      label: 模组版本 / Mod version
+      description: 模组菜单里显示的版本，例如 1.1.1
+    validations:
+      required: true
+
+  - type: input
+    id: game-version
+    attributes:
+      label: 游戏版本 / Game version
+      description: 模组菜单里显示的版本，例如 0.46D
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 现象 / What happened
+      description: 描述实际结果和预期结果的差别
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤 / Steps
+      placeholder: |
+        1. 生成一个养殖笼并在里面放两只老鼠
+        2. 用基础款涡轮拖到笼子上
+        3. 期望两只都 +1 天，实际……
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: 日志 / Log
+      description: |
+        `%USERPROFILE%\AppData\LocalLow\Questing Goose Studio\Probably Stolen\Player.log`
+        贴在代码块里，尤其是带 `[涡轮增压扩展]` 或 `推进养殖笼失败` 的行。
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 自检 / Checklist
+      options:
+        - label: 我已确认只安装了这一个修改涡轮判定的模组
+        - label: 我已尝试禁用其他模组后复现
