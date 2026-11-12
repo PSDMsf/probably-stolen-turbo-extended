@@ -83,7 +83,8 @@ if ($WriteVdf) {
     "changenote"       "$version"
 }
 "@
-    [System.IO.File]::WriteAllText($vdf, $template, (New-Object System.Text.UTF8Encoding($true)))
+    # Steam VDF parser dislikes a UTF-8 BOM: write plain UTF-8
+    [System.IO.File]::WriteAllText($vdf, $template, (New-Object System.Text.UTF8Encoding($false)))
     Write-Host "Wrote $vdf" -ForegroundColor Green
 }
 
