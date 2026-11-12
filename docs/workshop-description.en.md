@@ -1,4 +1,4 @@
-[h1]Turbo Booster Extended[/h1]
+[h1]Better Turbo Booster[/h1]
 
 Makes the [b]Turbo Booster[/b] (basic / advanced / hypertech) usable on husbandry targets, advancing them by [b]one day[/b].
 

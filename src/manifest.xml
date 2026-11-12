@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Manifest>
   <ID>ras_turbo_boost</ID>
-  <Name>涡轮增压扩展</Name>
+  <Name>更好的涡轮增压器</Name>
   <Author>PSDMsf</Author>
-  <ModVersion>1.1.1</ModVersion>
+  <ModVersion>1.1.2</ModVersion>
   <Description>让涡轮增压器（基础/高级/超科技）可以对循环水养殖系统、养殖笼和单只动物使用，使用后推进一天。</Description>
   <GameVersions>
     <Version>0.46D</Version>

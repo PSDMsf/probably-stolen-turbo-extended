@@ -69,7 +69,7 @@ if ($WriteVdf) {
     # VDF: escape double quotes; real newlines inside a quoted value are fine
     $esc = $desc.Replace('"', "'")
     # Title comes from manifest.xml so this script stays ASCII-only
-    $title = $mf.Manifest.Name + ' / Turbo Booster Extended'
+    $title = $mf.Manifest.Name + ' / Better Turbo Booster'
     $template = @"
 "workshopitem"
 {
